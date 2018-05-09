@@ -1,6 +1,6 @@
 {
-	"name": "catch/ss-robots",
-	"description": "Abstract away public/robots.txt to silverstripe config",
+	"name": "catch/ss-seo",
+	"description": "SEO enhancements for silverstripe 3",
 	"type": "silverstripe-module",
 	"version": "1.0.1",
 	"repositories": {
@@ -21,6 +21,7 @@
 	},
 	"require": {
 		"azt3k/abc-silverstripe": "*",
+		"azt3k/abc-silverstripe-social": "*",
         "composer/installers": "*",
 		"firebase/php-jwt": "*",
 		"php": ">=5.4",

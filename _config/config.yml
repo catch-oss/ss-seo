@@ -1,0 +1,13 @@
+---
+Name: ss-seo
+After:
+  - 'framework/*'
+  - 'cms/*'
+---
+SiteConfig:
+  extensions:
+    - SSRobotsConfigExtension
+
+Page:
+  extensions:
+    - CanonicalExtension

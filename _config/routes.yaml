@@ -1,0 +1,7 @@
+---
+Name: robot-project-routes
+After: framework/routes#coreroutes
+---
+Director:
+  rules:
+    'robots.txt': 'SSRobotsController'

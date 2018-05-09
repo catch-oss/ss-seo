@@ -1,9 +1,0 @@
----
-Name: ss-robots
-After:
-  - 'framework/*'
-  - 'cms/*'
----
-SiteConfig:
-  extensions:
-    - SSRobotsConfigExtension

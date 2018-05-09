@@ -23,9 +23,10 @@
 		"azt3k/abc-silverstripe": "*",
 		"azt3k/abc-silverstripe-social": "*",
         "composer/installers": "*",
-		"firebase/php-jwt": "*",
 		"php": ">=5.4",
-		"silverstripe/framework": "*"
+		"silverstripe/framework": "*",
+		"silverstripe/googlesitemaps": "1.2.*@stable",
+		"silverstripe/queuedjobs": "2.2.*@stable"
 	},
 	"require-dev": {
 		"phpunit/PHPUnit": "~3.7@stable",

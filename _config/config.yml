@@ -1,0 +1,14 @@
+---
+Name: ss-seo
+After:
+  - 'framework/*'
+  - 'cms/*'
+---
+SiteConfig:
+  enable_seo_cache_lifetime: true
+  extensions:
+    - SSRobotsConfigExtension
+
+Page:
+  extensions:
+    - CanonicalExtension

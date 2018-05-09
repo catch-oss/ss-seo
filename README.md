@@ -5,6 +5,7 @@ SS SEO
 - Meta` method from `abc-silverstripe-social`
 - Handles canonical urls
 - Updates partial caching time 
+- Reduce Silverstripe GD image quality to 70
 
 ### Usage
 
@@ -14,6 +15,14 @@ see https://docs.silverstripe.org/en/3/developer_guides/performance/partial_cach
 The extended cache lifetime can be turned off in the projects _config.php like this:
 
 Config::inst()->update('SiteConfig', 'enable_seo_cache_lifetime', true);
+
+#### Image quality
+To adjust the quality of the generated images when they are resized add the following to your config/config.yml file:
+
+GDBackend:
+    default_quality: 70
+    
+The default Silverstripe value is 75.
 
 ### TODO
 

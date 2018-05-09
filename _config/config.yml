@@ -12,3 +12,6 @@ SiteConfig:
 Page:
   extensions:
     - CanonicalExtension
+
+GDBackend:
+    default_quality: 70

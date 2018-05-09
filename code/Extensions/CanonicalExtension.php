@@ -20,6 +20,7 @@ class CanonicalExtension extends DataExtension
             $link = $this->stripSlashes($controller->Link());
 
             if ($baseUrl != $link) {
+
                 return $controller->redirect($link, 301);
             }
         }

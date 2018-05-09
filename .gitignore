@@ -1,1 +1,41 @@
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Compiled binary addons (http://nodejs.org/api/addons.html)
+build/Release
+dist/*
+
+# Dependency directories
+/node_modules
+/vendor
+/src/vendor
+/coverage-map-shapes
+
+# Users Environment Variables
+.lock-wscript
+.bundle
+.vagrant
+
+# project files
+*.sublime*
+
+# intermediate build products
+.tmp
+.tmp-build
+.sass-cache
+
+# state files
+/tiles/*/
+!/tiles/.keep
+/downloads/*
+!/downloads/.keep
+
+# Mac Files
 .idea
+.DS_Store

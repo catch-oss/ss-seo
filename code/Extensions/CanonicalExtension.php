@@ -11,48 +11,96 @@ class CanonicalExtension extends DataExtension
     {
         $controller = Controller::curr();
 
-        if ($controller->request->getURL()) {
+        if ($this->isHomePage($controller)) {
 
-            $params = $controller->request->params();
-            $url = $controller->request->getURL();
-            $baseUrl = $this->parseUrl($url, $params);
+            $requestUrl = $this->getRequestUrl();
 
-            $link = $this->stripSlashes($controller->Link());
+            if ($this->hasIndex()) {
+                $url = $this->stripIndex($requestUrl);
+                return $controller->redirect($url, 301);
+            }
 
-            if ($baseUrl != $link) {
+            return true;
+        }
 
-                return $controller->redirect($link, 301);
+        if ($this->isPage($controller)) {
+
+            $requestUrl = $this->getRequestUrl();
+            $expectedUrl = $this->getExpectedUrl($controller);
+
+            if ($requestUrl != $expectedUrl) {
+                return $controller->redirect($expectedUrl, 301);
             }
         }
     }
 
-    protected function parseUrl($url, $params)
+    protected function isHomePage($controller)
     {
-        if (array_key_exists('ID', $params)) {
-            $url = $this->stripID($url, $params['ID']);
-            $url = $this->stripSlashes($url);
+        if ($controller->request->getURL() == 'home' || $controller->request->getURL() == '') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    protected function hasIndex()
+    {
+        $requestUrl = $this->getRequestUrl();
+        if (strpos($requestUrl, 'index.php') == false) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    protected function isPage($controller)
+    {
+        if ($controller->request->getURL()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getExpectedUrl($controller)
+    {
+        $params = $controller->request->params();
+        $url = $controller->link();
+        $q = $this->getQueryString($controller->request);
+
+        $url = $this->stripIndex($url);
+
+        if (!empty($params['Action'])) {
+            $url = $url . '/' . $params['Action'];
         }
 
-        if (array_key_exists('Action', $params)) {
-            $url = $this->stripAction($url, $params['Action']);
-            $url = $this->stripSlashes($url);
+        if (!empty($params['ID'])) {
+            $url = $url . '/' . $params['ID'];
+        }
+
+        if ($q) {
+            $url = rtrim($url, '/') . '?' . $q;
+        } else {
+            $url = rtrim($url, '/') . '/';
         }
 
         return $url;
     }
 
-    protected function stripSlashes($url)
+    protected function getQueryString($request)
     {
-        return trim($url, '/');
+        $url = $request->getUrl(true);
+        return parse_url($url, PHP_URL_QUERY);
     }
 
-    protected function stripAction($url, $action)
+    protected function getRequestUrl()
     {
-        return str_replace($action, "", $url);
+        $url = $_SERVER['REQUEST_URI'];
+        return $url;
     }
 
-    protected function stripID($url, $id)
+    protected function stripIndex($url)
     {
-        return str_replace($id, "", $url);
+        return str_replace('/index.php', "", $url);
     }
 }

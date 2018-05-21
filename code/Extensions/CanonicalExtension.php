@@ -27,7 +27,6 @@ class CanonicalExtension extends DataExtension
 
             $requestUrl = $this->getRequestUrl();
             $expectedUrl = $this->getExpectedUrl($controller);
-
             if ($requestUrl != $expectedUrl) {
                 return $controller->redirect($expectedUrl, 301);
             }
@@ -71,11 +70,11 @@ class CanonicalExtension extends DataExtension
         $url = $this->stripIndex($url);
 
         if (!empty($params['Action'])) {
-            $url = $url . '/' . $params['Action'];
+            $url = rtrim($url, '/') . '/' . $params['Action'];
         }
 
         if (!empty($params['ID'])) {
-            $url = $url . '/' . $params['ID'];
+            $url = rtrim($url, '/') . '/' . $params['ID'];
         }
 
         if ($q) {

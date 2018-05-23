@@ -11,6 +11,10 @@ class CanonicalExtension extends DataExtension
     {
         $controller = Controller::curr();
 
+        // this is a bit of a nasty work around, but makes the module less dangerous
+        // as the POST data get's lost on a 301
+        if (!$controller->getRequest()->isGET()) return;
+
         if ($this->isHomePage($controller)) {
 
             $requestUrl = $this->getRequestUrl();

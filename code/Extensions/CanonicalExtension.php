@@ -69,8 +69,8 @@ class CanonicalExtension extends DataExtension
     public function getExpectedUrl($controller)
     {
         $params = $controller->request->params();
-        $url = $_SERVER['REQUEST_URI'];//$controller->link();
-        $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
+        $url = $controller->link();
+        $uri_parts = explode('?', $url, 2);
         $url = $uri_parts[0];
 
         $q = $this->getQueryString($controller->request);

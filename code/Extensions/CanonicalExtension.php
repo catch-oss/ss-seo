@@ -9,6 +9,7 @@ class CanonicalExtension extends DataExtension
 
     public function contentcontrollerInit()
     {
+        //return true;
         $controller = Controller::curr();
 
         // this is a bit of a nasty work around, but makes the module less dangerous
@@ -68,10 +69,14 @@ class CanonicalExtension extends DataExtension
     public function getExpectedUrl($controller)
     {
         $params = $controller->request->params();
-        $url = $controller->link();
-        $q = $this->getQueryString($controller->request);
+        $url = $_SERVER['REQUEST_URI'];//$controller->link();
+        $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
+        $url = $uri_parts[0];
 
+        $q = $this->getQueryString($controller->request);
         $url = $this->stripIndex($url);
+
+
 
         if (!empty($params['Action'])) {
             $url = rtrim($url, '/') . '/' . $params['Action'];

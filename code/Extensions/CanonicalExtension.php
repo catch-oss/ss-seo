@@ -13,7 +13,7 @@ class CanonicalExtension extends DataExtension
         $controller = Controller::curr();
 
         // this is a bit of a nasty work around, but makes the module less dangerous
-        // as the POST data get's lost on a 301
+        // as the POST data gets lost on a 301
         if (!$controller->getRequest()->isGET()) return;
 
         if ($this->isHomePage($controller)) {
@@ -32,6 +32,7 @@ class CanonicalExtension extends DataExtension
 
             $requestUrl = $this->getRequestUrl();
             $expectedUrl = $this->getExpectedUrl($controller);
+            // die($expectedUrl);
             if ($requestUrl != $expectedUrl) {
                 return $controller->redirect($expectedUrl, 301);
             }
@@ -59,7 +60,7 @@ class CanonicalExtension extends DataExtension
 
     protected function isPage($controller)
     {
-        if ($controller->request->getURL()) {
+        if ($controller instanceof ContentController) {
             return true;
         } else {
             return false;
@@ -70,20 +71,17 @@ class CanonicalExtension extends DataExtension
     {
         $params = $controller->request->params();
         $url = $controller->link();
+
         $uri_parts = explode('?', $url, 2);
         $url = $uri_parts[0];
 
         $q = $this->getQueryString($controller->request);
         $url = $this->stripIndex($url);
 
-
-
-        if (!empty($params['Action'])) {
-            $url = rtrim($url, '/') . '/' . $params['Action'];
-        }
-
-        if (!empty($params['ID'])) {
-            $url = rtrim($url, '/') . '/' . $params['ID'];
+        foreach ($params as $k => $v) {
+            if (!empty($v) && $k != 'Controller') {
+                $url = rtrim($url, '/') . '/' . $v;
+            }
         }
 
         if ($q) {

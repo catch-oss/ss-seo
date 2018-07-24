@@ -5,3 +5,14 @@ After: framework/routes#coreroutes
 Director:
   rules:
     'robots.txt': 'SSRobotsController'
+# ---
+# Name: extendedmodelascontrollerroutes
+# Before: '*'
+# After:
+#   - framework/routes#rootroutes
+#   - framework/routes#coreroutes
+#   - cms/routes#modelascontrollerroutes
+# ---
+# Director:
+#   rules:
+#     '$URLSegment//$Action/$ID/$OtherID/$ID3/$ID4': 'ModelAsController'

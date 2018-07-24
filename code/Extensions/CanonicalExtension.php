@@ -79,7 +79,8 @@ class CanonicalExtension extends DataExtension
         $url = $this->stripIndex($url);
 
         foreach ($params as $k => $v) {
-            if (!empty($v) && $k != 'Controller') {
+            // echo $k . " - " . $v . "<br>";
+            if (!empty($v) && $k != 'Controller' && $k != 'URLSegment') {
                 $url = rtrim($url, '/') . '/' . $v;
             }
         }

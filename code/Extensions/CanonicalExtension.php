@@ -72,6 +72,9 @@ class CanonicalExtension extends DataExtension
         $params = $controller->request->params();
         $url = $controller->link();
 
+        if(strpos($controller, 'RedirectorPage') !== false)
+            return $url;
+
         $uri_parts = explode('?', $url, 2);
         $url = $uri_parts[0];
 

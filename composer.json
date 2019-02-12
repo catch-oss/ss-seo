@@ -25,7 +25,7 @@
         "composer/installers": "*",
 		"php": ">=5.6",
 		"silverstripe/framework": "*",
-		"silverstripe/googlesitemaps": "1.2.*@stable",
+		"silverstripe/googlesitemaps": "dev-master",
 		"symbiote/silverstripe-queuedjobs": "3.0.1"
 	},
 	"require-dev": {

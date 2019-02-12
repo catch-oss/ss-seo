@@ -26,7 +26,7 @@
 		"php": ">=5.4",
 		"silverstripe/framework": "*",
 		"silverstripe/googlesitemaps": "1.2.*@stable",
-		"symbiote/silverstripe-queuedjobs": "4.3.2"
+		"symbiote/silverstripe-queuedjobs": "3.0.1"
 	},
 	"require-dev": {
 		"phpunit/PHPUnit": "~3.7@stable",

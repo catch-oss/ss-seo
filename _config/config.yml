@@ -1,8 +1,5 @@
 ---
 Name: ss-seo
-After:
-  - 'framework/*'
-  - 'cms/*'
 ---
 SilverStripe\SiteConfig\SiteConfig:
   enable_seo_cache_lifetime: true

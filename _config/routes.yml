@@ -4,7 +4,7 @@ After: framework/routes#coreroutes
 ---
 Director:
   rules:
-    'robots.txt': 'SSRobotsController'
+    'robots.txt': 'CatchDesign\SS\SEO\Controllers\SSRobotsController'
 # ---
 # Name: extendedmodelascontrollerroutes
 # Before: '*'

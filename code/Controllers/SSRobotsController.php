@@ -1,4 +1,7 @@
 <?php
+namespace CatchDesign\SS\SEO\Controllers;
+
+use SilverStripe\SiteConfig\SiteConfig;
 /**
  * @author v2
  */

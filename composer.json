@@ -23,7 +23,7 @@
 		"azt3k/abc-silverstripe": "*",
 		"azt3k/abc-silverstripe-social": "*",
         "composer/installers": "*",
-		"php": ">=5.4",
+		"php": ">=5.6",
 		"silverstripe/framework": "*",
 		"silverstripe/googlesitemaps": "1.2.*@stable",
 		"symbiote/silverstripe-queuedjobs": "3.0.1"
@@ -32,5 +32,10 @@
 		"phpunit/PHPUnit": "~3.7@stable",
         "squizlabs/php_codesniffer": "2.5.*@stable",
 		"mattclegg/silverstripe-codesniffer": "0.0.1"
-	}
+	},
+	"autoload": {
+        "psr-4": {
+            "CatchDesign\\SS\\SEO\\": "code/"
+        }
+    }
 }

@@ -2,7 +2,7 @@
 	"name": "catch/ss-seo",
 	"description": "SEO enhancements for silverstripe 3",
 	"type": "silverstripe-module",
-	"version": "2.0.3",
+	"version": "2.0.4",
 	"repositories": {
 		"type": "package",
 		"package": {

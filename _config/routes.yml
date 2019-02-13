@@ -1,8 +1,7 @@
 ---
 Name: robot-project-routes
-After: framework/routes#coreroutes
 ---
-Director:
+SilverStripe\Control\Director:
   rules:
     'robots.txt': 'CatchDesign\SS\SEO\Controllers\SSRobotsController'
 # ---

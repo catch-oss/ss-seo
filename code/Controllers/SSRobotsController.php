@@ -2,6 +2,8 @@
 namespace CatchDesign\SS\SEO\Controllers;
 
 use SilverStripe\SiteConfig\SiteConfig;
+use SilverStripe\Control\Controller;
+
 /**
  * @author v2
  */

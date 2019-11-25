@@ -1,10 +1,9 @@
 ---
 Name: robot-project-routes
-After: framework/routes#coreroutes
 ---
-Director:
+SilverStripe\Control\Director:
   rules:
-    'robots.txt': 'SSRobotsController'
+    'robots.txt': 'CatchDesign\SS\SEO\Controllers\SSRobotsController'
 # ---
 # Name: extendedmodelascontrollerroutes
 # Before: '*'

@@ -1,17 +1,19 @@
 ---
 Name: ss-seo
-After:
-  - 'framework/*'
-  - 'cms/*'
 ---
-SiteConfig:
+SilverStripe\SiteConfig\SiteConfig:
   enable_seo_cache_lifetime: true
-  extensions:
-    - SSRobotsConfigExtension
 
-Page:
   extensions:
-    - CanonicalExtension
+    - CatchDesign\SS\SEO\Extensions\SSRobotsConfigExtension
+
+SilverStripe\CMS\Model\SiteTree:
+  extensions:
+    - CatchDesign\SS\SEO\Extensions\CanonicalExtension
 
 GDBackend:
     default_quality: 70
+
+# 28days apparently
+cacheblock:
+  cache_ttl: 2419200

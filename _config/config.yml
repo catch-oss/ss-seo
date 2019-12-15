@@ -3,7 +3,6 @@ Name: ss-seo
 ---
 SilverStripe\SiteConfig\SiteConfig:
   enable_seo_cache_lifetime: true
-
   extensions:
     - CatchDesign\SS\SEO\Extensions\SSRobotsConfigExtension
 
@@ -11,9 +10,10 @@ SilverStripe\CMS\Model\SiteTree:
   extensions:
     - CatchDesign\SS\SEO\Extensions\CanonicalExtension
 
-GDBackend:
-    default_quality: 70
-
-# 28days apparently
-cacheblock:
-  cache_ttl: 2419200
+SilverStripe\Core\Injector\Injector:
+  SilverStripe\Assets\Image_Backend:
+    properties:
+      Quality: 70
+  Psr\SimpleCache\CacheInterface.cacheblock:
+    constructor:
+      defaultLifetime: 2419200

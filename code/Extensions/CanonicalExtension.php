@@ -37,7 +37,7 @@ class CanonicalExtension extends DataExtension
 
             $requestUrl = $this->getRequestUrl();
             $expectedUrl = $this->getExpectedUrl($controller);
-            die($expectedUrl);
+            // die($expectedUrl);
             if ($requestUrl != $expectedUrl) {
                 return $controller->redirect($expectedUrl, 301);
             }

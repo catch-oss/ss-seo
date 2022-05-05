@@ -9,6 +9,7 @@ SilverStripe\SiteConfig\SiteConfig:
 SilverStripe\CMS\Model\SiteTree:
   extensions:
     - CatchDesign\SS\SEO\Extensions\CanonicalExtension
+    - CatchDesign\SS\SEO\Extensions\SiteTreeRobotsExtension
 
 SilverStripe\Core\Injector\Injector:
   SilverStripe\Assets\Image_Backend:

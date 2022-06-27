@@ -46,7 +46,13 @@ class SiteTreeRobotsExtension extends DataExtension
     {
         $controller = Controller::curr();
         $res = $controller->getResponse();
-        $val = preg_replace('/[^a-z,]/', '', $controller->data()->RobotsTag ?? 'all');
+        try {
+            $data = $controller->data();
+            $robotsTag = $data->RobotsTag ?? 'all';
+        } catch (\Exception $e) {
+            $robotsTag = 'all';
+        }
+        $val = preg_replace('/[^a-z,]/', '', $robotsTag);
         $res->addHeader('X-Robots-Tag', $val);
     }
 }

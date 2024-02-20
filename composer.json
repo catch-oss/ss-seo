@@ -3,34 +3,17 @@
 	"description": "SEO enhancements for silverstripe 3",
 	"type": "silverstripe-module",
 	"version": "1.0.1",
-	"repositories": {
-		"type": "package",
-		"package": {
-			"name": "mattclegg/silverstripe-codesniffer",
-			"type": "silverstripe-module",
-			"version": "0.0.1",
-			"require": {
-				"squizlabs/php_codesniffer": ">=2.3@stable"
-			},
-			"source": {
-				"type": "git",
-				"url": "https://github.com/mattclegg/silverstripe-codesniffer.git",
-				"reference": "e673dc210dd56d92a9766e7e8766f85e8b9444a6"
-			}
-		}
-	},
+	"repositories": {},
 	"require": {
 		"azt3k/abc-silverstripe": "*",
 		"azt3k/abc-silverstripe-social": "*",
         "composer/installers": "*",
-		"php": ">=5.6",
+		"php": ">=8.1",
 		"silverstripe/framework": "*",
 		"silverstripe/googlesitemaps": "*",
 		"symbiote/silverstripe-queuedjobs": "*"
 	},
 	"require-dev": {
-		"phpunit/PHPUnit": "~3.7@stable",
-        "squizlabs/php_codesniffer": "2.5.*@stable",
-		"mattclegg/silverstripe-codesniffer": "0.0.1"
+		"phpunit/PHPUnit": "~9@stable",
 	}
 }

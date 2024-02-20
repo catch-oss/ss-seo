@@ -1,4 +1,9 @@
 <?php
+namespace CatchDesign\SS\SEO\Extensions;
+
+use SilverStripe\ORM\DataExtension;
+use SilverStripe\Control\Controller;
+use SilverStripe\CMS\Controllers\ContentController;
 
 /*
  * Does a lookup on init at the request URL and does a 301 redirect to page link if they are not same
@@ -89,7 +94,7 @@ class CanonicalExtension extends DataExtension
         }
 
         if ($q) {
-            $url = rtrim($url, '/') . '?' . $q;
+            $url = rtrim($url, '/') . '/?' . $q;
         } else {
             $url = rtrim($url, '/') . '/';
         }

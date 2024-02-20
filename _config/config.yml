@@ -1,17 +1,20 @@
 ---
 Name: ss-seo
-After:
-  - 'framework/*'
-  - 'cms/*'
 ---
-SiteConfig:
+SilverStripe\SiteConfig\SiteConfig:
   enable_seo_cache_lifetime: true
   extensions:
-    - SSRobotsConfigExtension
+    - CatchDesign\SS\SEO\Extensions\SSRobotsConfigExtension
 
-Page:
+SilverStripe\CMS\Model\SiteTree:
   extensions:
-    - CanonicalExtension
+    - CatchDesign\SS\SEO\Extensions\CanonicalExtension
+    - CatchDesign\SS\SEO\Extensions\SiteTreeRobotsExtension
 
-GDBackend:
-    default_quality: 70
+SilverStripe\Core\Injector\Injector:
+  SilverStripe\Assets\Image_Backend:
+    properties:
+      Quality: 70
+  Psr\SimpleCache\CacheInterface.cacheblock:
+    constructor:
+      defaultLifetime: 2419200

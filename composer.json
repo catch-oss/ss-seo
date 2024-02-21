@@ -14,6 +14,6 @@
 		"symbiote/silverstripe-queuedjobs": "*"
 	},
 	"require-dev": {
-		"phpunit/PHPUnit": "~9@stable",
+		"phpunit/PHPUnit": "~9@stable"
 	}
 }

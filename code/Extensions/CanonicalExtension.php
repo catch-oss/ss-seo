@@ -4,6 +4,9 @@
  * Does a lookup on init at the request URL and does a 301 redirect to page link if they are not same
  */
 
+use SilverStripe\Control\Controller;
+use SilverStripe\ORM\DataExtension;
+
 class CanonicalExtension extends DataExtension
 {
 

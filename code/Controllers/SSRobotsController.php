@@ -1,4 +1,8 @@
 <?php
+
+use SilverStripe\Control\Controller;
+use SilverStripe\SiteConfig\SiteConfig;
+
 /**
  * @author v2
  */

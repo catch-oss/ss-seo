@@ -1,8 +1,8 @@
 {
 	"name": "catch/ss-seo",
-	"description": "SEO enhancements for silverstripe 3",
+	"description": "SEO enhancements for silverstripe 5",
 	"type": "silverstripe-module",
-	"version": "1.0.1",
+	"version": "5.0.0",
 	"repositories": {},
 	"require": {
 		"azt3k/abc-silverstripe": "*",

@@ -7,11 +7,11 @@ After:
 SiteConfig:
   enable_seo_cache_lifetime: true
   extensions:
-    - SSRobotsConfigExtension
+    - Catch\SS-SEO\DataExtension\SSRobotsConfigExtension
 
 Page:
   extensions:
-    - CanonicalExtension
+    - Catch\SS-SEO\DataExtension\CanonicalExtension
 
 GDBackend:
     default_quality: 70

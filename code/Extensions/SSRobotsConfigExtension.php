@@ -1,5 +1,7 @@
 <?php
 
+namespace Catch\SS-SEO\DataExtension;
+
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\ORM\DataExtension;

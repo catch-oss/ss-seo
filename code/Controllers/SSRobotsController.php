@@ -1,6 +1,6 @@
 <?php
 
-namespace Catch\SS-SEO\Controller;
+namespace Catch\SS_SEO;
 
 use SilverStripe\Control\Controller;
 use SilverStripe\SiteConfig\SiteConfig;

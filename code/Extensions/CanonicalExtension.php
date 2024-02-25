@@ -1,5 +1,7 @@
 <?php
 
+namespace Catch\SS-SEO\DataExtension;
+
 /*
  * Does a lookup on init at the request URL and does a 301 redirect to page link if they are not same
  */

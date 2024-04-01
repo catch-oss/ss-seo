@@ -14,7 +14,7 @@
     "symbiote/silverstripe-queuedjobs": "*"
   },
   "require-dev": {
-    "phpunit/PHPUnit": "~9@stable"
+    "phpunit/phpunit": "~9@stable"
   },
   "autoload": {
     "psr-4": {

@@ -99,7 +99,7 @@ class CanonicalExtension extends DataExtension
         }
 
         if ($q) {
-            $url = rtrim($url, '/') . '/?' . $q;
+            $url = rtrim($url, '/') . '?' . $q;
         } else {
             $url = rtrim($url, '/');
         }

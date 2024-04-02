@@ -1,12 +1,12 @@
 ---
 Name: ss-seo
 ---
-SiteConfig:
+SilverStripe\SiteConfig\SiteConfig:
   enable_seo_cache_lifetime: true
   extensions:
     - Catch\SS_SEO\SSRobotsConfigExtension
 
-Page:
+SilverStripe\CMS\Model\SiteTree:
   extensions:
     - Catch\SS_SEO\CanonicalExtension
 

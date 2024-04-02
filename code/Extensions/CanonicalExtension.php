@@ -1,4 +1,9 @@
 <?php
+namespace CatchDesign\SS\SEO\Extensions;
+
+use SilverStripe\ORM\DataExtension;
+use SilverStripe\Control\Controller;
+use SilverStripe\CMS\Controllers\ContentController;
 
 namespace Catch\SS_SEO;
 /*
@@ -94,7 +99,7 @@ class CanonicalExtension extends DataExtension
         }
 
         if ($q) {
-            $url = rtrim($url, '/') . '?' . $q;
+            $url = rtrim($url, '/') . '/?' . $q;
         } else {
             $url = rtrim($url, '/');
         }

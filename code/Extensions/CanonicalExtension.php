@@ -5,14 +5,9 @@ use SilverStripe\ORM\DataExtension;
 use SilverStripe\Control\Controller;
 use SilverStripe\CMS\Controllers\ContentController;
 
-namespace Catch\SS_SEO;
 /*
  * Does a lookup on init at the request URL and does a 301 redirect to page link if they are not same
  */
-
-use SilverStripe\CMS\Controllers\ContentController;
-use SilverStripe\Control\Controller;
-use SilverStripe\ORM\DataExtension;
 
 class CanonicalExtension extends DataExtension
 {

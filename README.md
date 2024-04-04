@@ -10,11 +10,10 @@ SS SEO
 ### Usage
 
 #### Partial View Caching
-This module updates the default value for partial caching from 10 minutes to 28 days.
-see https://docs.silverstripe.org/en/3/developer_guides/performance/partial_caching for more details.
-The extended cache lifetime can be turned off in the projects _config.php like this:
-
-Config::inst()->update('SiteConfig', 'enable_seo_cache_lifetime', true);
+enable_seo_cache_lifetime has been removed
+for longer cache times, implement on a per project basis
+See the default life time paragraph here
+https://docs.silverstripe.org/en/5/developer_guides/performance/caching/#invalidation
 
 #### Image quality
 To adjust the quality of the generated images when they are resized add the following to your config/config.yml file:

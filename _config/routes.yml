@@ -5,6 +5,7 @@ SilverStripe\Control\Director:
   rules:
     'robots.txt': 'CatchDesign\SS\SEO\Controllers\SSRobotsController'
 # ---
+# ---
 # Name: extendedmodelascontrollerroutes
 # Before: '*'
 # After:

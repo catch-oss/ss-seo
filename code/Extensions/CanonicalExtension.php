@@ -94,12 +94,12 @@ class CanonicalExtension extends DataExtension
         }
 
         if ($q) {
-            $url = rtrim($url, '/') . '/?' . $q;
+            $url = rtrim($url, '/') . '?' . $q;
         } else {
-            $url = rtrim($url, '/') . '/';
+            $url = rtrim($url, '/');
         }
 
-        return $url;
+        return Controller::normaliseTrailingSlash($url);
     }
 
     protected function getQueryString($request)

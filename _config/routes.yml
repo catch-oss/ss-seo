@@ -3,7 +3,8 @@ Name: robot-project-routes
 ---
 SilverStripe\Control\Director:
   rules:
-    'robots.txt': 'Catch\SS_SEO\SSRobotsController'
+    'robots.txt': 'CatchDesign\SS\SEO\Controllers\SSRobotsController'
+# ---
 # ---
 # Name: extendedmodelascontrollerroutes
 # Before: '*'

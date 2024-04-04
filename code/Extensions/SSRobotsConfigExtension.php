@@ -1,6 +1,5 @@
 <?php
-
-namespace Catch\SS_SEO;
+namespace CatchDesign\SS\SEO\Extensions;
 
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextareaField;

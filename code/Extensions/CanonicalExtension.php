@@ -104,7 +104,7 @@ class CanonicalExtension extends DataExtension
             $url = rtrim($url, '/');
         }
 
-        return $url;
+        return Controller::normaliseTrailingSlash($url);
     }
 
     protected function getQueryString($request)

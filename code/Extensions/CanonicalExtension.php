@@ -40,7 +40,7 @@ class CanonicalExtension extends Extension
             $requestUrl = $this->getRequestUrl();
             $expectedUrl = $this->getExpectedUrl($controller);
 
-            if ($requestUrl != $expectedUrl) {
+            if ($requestUrl !== $expectedUrl) {
                 $controller->redirect($expectedUrl, 301);
             }
         }
@@ -99,6 +99,11 @@ class CanonicalExtension extends Extension
         return parse_url($url, PHP_URL_QUERY) ?: null;
     }
 
+    /**
+     * Uses $_SERVER['REQUEST_URI'] directly (not $request->getURL()) because we need
+     * the raw browser URL to compare against the canonical. The framework normalizes
+     * URLs during routing, which would defeat the mismatch detection.
+     */
     protected function getRequestUrl(): string
     {
         return $_SERVER['REQUEST_URI'] ?? '';

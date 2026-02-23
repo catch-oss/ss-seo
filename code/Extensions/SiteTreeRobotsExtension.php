@@ -50,6 +50,8 @@ class SiteTreeRobotsExtension extends Extension
         }
 
         $res = $controller->getResponse();
+        // Broad catch is intentional — data() can fail on ErrorPages, previews, or
+        // controllers without a data record. Defaulting to 'all' is the safest fallback.
         try {
             $data = $controller->data();
             $robotsTag = $data->RobotsTag ?? 'all';

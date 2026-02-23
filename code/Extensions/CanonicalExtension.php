@@ -1,94 +1,84 @@
 <?php
+
 namespace CatchDesign\SS\SEO\Extensions;
 
-use SilverStripe\Core\Extension;
-use SilverStripe\Control\Controller;
 use SilverStripe\CMS\Controllers\ContentController;
+use SilverStripe\CMS\Controllers\RedirectorPageController;
+use SilverStripe\Control\Controller;
+use SilverStripe\Control\HTTPRequest;
+use SilverStripe\Core\Extension;
 
-/*
- * Does a lookup on init at the request URL and does a 301 redirect to page link if they are not same
+/**
+ * Does a lookup on init at the request URL and does a 301 redirect to page link if they are not same.
  */
-
 class CanonicalExtension extends Extension
 {
-
-    public function contentcontrollerInit()
+    public function contentcontrollerInit(): void
     {
-        //return true;
         $controller = Controller::curr();
+        if ($controller === null) {
+            return;
+        }
 
-        // this is a bit of a nasty work around, but makes the module less dangerous
-        // as the POST data gets lost on a 301
-        if (!$controller->getRequest()->isGET()) return;
+        // POST data gets lost on a 301, so skip non-GET requests
+        if (!$controller->getRequest()->isGET()) {
+            return;
+        }
 
         if ($this->isHomePage($controller)) {
-
             $requestUrl = $this->getRequestUrl();
 
             if ($this->hasIndex()) {
                 $url = $this->stripIndex($requestUrl);
-                return $controller->redirect($url, 301);
+                $controller->redirect($url, 301);
             }
 
-            return true;
+            return;
         }
 
         if ($this->isPage($controller)) {
-
             $requestUrl = $this->getRequestUrl();
             $expectedUrl = $this->getExpectedUrl($controller);
-            // die($expectedUrl);
+
             if ($requestUrl != $expectedUrl) {
-                return $controller->redirect($expectedUrl, 301);
+                $controller->redirect($expectedUrl, 301);
             }
         }
     }
 
-    protected function isHomePage($controller)
+    protected function isHomePage(Controller $controller): bool
     {
-        if ($controller->request->getURL() == 'home' || $controller->request->getURL() == '') {
-            return true;
-        } else {
-            return false;
-        }
+        $url = $controller->getRequest()->getURL();
+        return $url === 'home' || $url === '';
     }
 
-    protected function hasIndex()
+    protected function hasIndex(): bool
     {
         $requestUrl = $this->getRequestUrl();
-        if (!str_contains($requestUrl, 'index.php')) {
-            return false;
-        } else {
-            return true;
-        }
+        return str_contains($requestUrl, 'index.php');
     }
 
-    protected function isPage($controller)
+    protected function isPage(Controller $controller): bool
     {
-        if ($controller instanceof ContentController) {
-            return true;
-        } else {
-            return false;
-        }
+        return $controller instanceof ContentController;
     }
 
-    public function getExpectedUrl($controller)
+    public function getExpectedUrl(Controller $controller): string
     {
-        $params = $controller->request->params();
+        $params = $controller->getRequest()->params();
         $url = $controller->link();
 
-        if ($controller instanceof \SilverStripe\CMS\Controllers\RedirectorPageController) {
+        if ($controller instanceof RedirectorPageController) {
             return $url;
         }
 
         $uri_parts = explode('?', $url, 2);
         $url = $uri_parts[0];
 
-        $q = $this->getQueryString($controller->request);
+        $q = $this->getQueryString($controller->getRequest());
         $url = $this->stripIndex($url);
 
         foreach ($params as $k => $v) {
-
             if (!empty($v) && $k != 'Controller' && $k != 'URLSegment') {
                 $url = rtrim($url, '/') . '/' . $v;
             }
@@ -103,20 +93,19 @@ class CanonicalExtension extends Extension
         return Controller::normaliseTrailingSlash($url);
     }
 
-    protected function getQueryString($request)
+    protected function getQueryString(HTTPRequest $request): ?string
     {
-        $url = $request->getUrl(true);
-        return parse_url($url, PHP_URL_QUERY);
+        $url = $request->getURL(true);
+        return parse_url($url, PHP_URL_QUERY) ?: null;
     }
 
-    protected function getRequestUrl()
+    protected function getRequestUrl(): string
     {
-        $url = $_SERVER['REQUEST_URI'];
-        return $url;
+        return $_SERVER['REQUEST_URI'] ?? '';
     }
 
-    protected function stripIndex($url)
+    protected function stripIndex(string $url): string
     {
-        return str_replace('/index.php', "", $url);
+        return str_replace('/index.php', '', $url);
     }
 }

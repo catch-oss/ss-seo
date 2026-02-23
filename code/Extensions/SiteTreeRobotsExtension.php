@@ -1,23 +1,24 @@
 <?php
+
 namespace CatchDesign\SS\SEO\Extensions;
 
-use SilverStripe\Core\Extension;
 use SilverStripe\Control\Controller;
+use SilverStripe\Core\Extension;
 use SilverStripe\Forms\CheckboxSetField;
 use SilverStripe\Forms\FieldGroup;
 use SilverStripe\Forms\FieldList;
 
-/*
- * Does a lookup on init at the request URL and does a 301 redirect to page link if they are not same
+/**
+ * Adds per-page robots meta tag control and sets X-Robots-Tag header on responses.
  */
-
 class SiteTreeRobotsExtension extends Extension
 {
-    private static $db = array(
-        'RobotsTag' => 'Text'
-    );
+    private static $db = [
+        'RobotsTag' => 'Text',
+    ];
 
-    public function updateSettingsFields(FieldList $fields) {
+    public function updateSettingsFields(FieldList $fields): void
+    {
         $fields->addFieldToTab(
             'Root.Settings',
             FieldGroup::create(
@@ -39,12 +40,15 @@ class SiteTreeRobotsExtension extends Extension
                 )->setDescription('See <a href="https://developers.google.com/search/docs/advanced/robots/robots_meta_tag" target="_blank">docs</a> for more info')
             )->setTitle('Robots')
         );
-        return $fields;
     }
 
-    public function contentcontrollerInit()
+    public function contentcontrollerInit(): void
     {
         $controller = Controller::curr();
+        if ($controller === null) {
+            return;
+        }
+
         $res = $controller->getResponse();
         try {
             $data = $controller->data();

@@ -1,27 +1,50 @@
-SS SEO
-=====================
-- Adds `Robots` tab to the site settings.
-- Adds a route that points at a controller that returns plain/text Robots text from the db
-- Meta` method from `abc-silverstripe-social`
-- Handles canonical urls
-- Updates partial caching time 
-- Reduce Silverstripe GD image quality to 70
+# SS SEO
 
-### Usage
+SEO enhancements for Silverstripe.
 
-#### Partial View Caching
-enable_seo_cache_lifetime has been removed
-for longer cache times, implement on a per project basis
-See the default life time paragraph here
-https://docs.silverstripe.org/en/5/developer_guides/performance/caching/#invalidation
+- Adds `Robots` tab to site settings with editable robots.txt content
+- Serves `/robots.txt` via a controller that returns plain text from the database
+- Handles canonical URL redirects (301) to prevent duplicate content
+- Per-page `X-Robots-Tag` header control (noindex, nofollow, etc.)
+- Reduces Silverstripe GD image quality to 70
 
-#### Image quality
-To adjust the quality of the generated images when they are resized add the following to your config/config.yml file:
+## Compatibility
 
-GDBackend:
-    default_quality: 70
-    
-The default Silverstripe value is 75.
+| Version | Silverstripe | PHP |
+|---------|-------------|-----|
+| 6.x | ^6.0 | ^8.5 |
+| 5.x | ^5.1 | >=8.1 |
 
-### TODO
+## Installation
 
+```bash
+composer require catch/ss-seo
+```
+
+## Usage
+
+### Robots.txt
+
+The module registers a route at `/robots.txt` that serves content from the `Robots` tab in **Settings > Site Configuration**. Edit the robots.txt content directly in the CMS.
+
+### Canonical URLs
+
+The `CanonicalExtension` automatically redirects (301) requests to the canonical URL for each page. It:
+- Strips `index.php` from URLs
+- Redirects `/home` to `/`
+- Skips POST requests to avoid data loss
+
+### Per-page Robots Meta Tag
+
+The `SiteTreeRobotsExtension` adds an `X-Robots-Tag` HTTP header to every page response. Configure per-page directives (noindex, nofollow, etc.) under **Page > Settings > Robots**.
+
+### Image Quality
+
+Default image quality is set to 70 via Injector config. To override, add to your project config:
+
+```yaml
+SilverStripe\Core\Injector\Injector:
+  SilverStripe\Assets\Image_Backend:
+    properties:
+      Quality: 85
+```

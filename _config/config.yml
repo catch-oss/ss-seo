@@ -4,12 +4,12 @@ Name: ss-seo
 SilverStripe\SiteConfig\SiteConfig:
   enable_seo_cache_lifetime: true
   extensions:
-    - CatchDesign\SS\SEO\Extensions\SSRobotsConfigExtension
+    ss-robots-config: CatchDesign\SS\SEO\Extensions\SSRobotsConfigExtension
 
 SilverStripe\CMS\Model\SiteTree:
   extensions:
-    - CatchDesign\SS\SEO\Extensions\CanonicalExtension
-    - CatchDesign\SS\SEO\Extensions\SiteTreeRobotsExtension
+    ss-canonical: CatchDesign\SS\SEO\Extensions\CanonicalExtension
+    ss-site-tree-robots: CatchDesign\SS\SEO\Extensions\SiteTreeRobotsExtension
 
 SilverStripe\Core\Injector\Injector:
   SilverStripe\Assets\Image_Backend:

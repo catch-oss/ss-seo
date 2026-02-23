@@ -56,7 +56,7 @@ class CanonicalExtension extends Extension
     protected function hasIndex()
     {
         $requestUrl = $this->getRequestUrl();
-        if (strpos($requestUrl, 'index.php') == false) {
+        if (!str_contains($requestUrl, 'index.php')) {
             return false;
         } else {
             return true;
@@ -77,8 +77,9 @@ class CanonicalExtension extends Extension
         $params = $controller->request->params();
         $url = $controller->link();
 
-        if(is_a($controller, 'RedirectorPage_Controller'))
+        if ($controller instanceof \SilverStripe\CMS\Controllers\RedirectorPageController) {
             return $url;
+        }
 
         $uri_parts = explode('?', $url, 2);
         $url = $uri_parts[0];

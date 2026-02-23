@@ -3,12 +3,12 @@ namespace CatchDesign\SS\SEO\Extensions;
 
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextareaField;
-use SilverStripe\ORM\DataExtension;
+use SilverStripe\Core\Extension;
 
 /**
  * @author v2
  */
-class SSRobotsConfigExtension extends DataExtension {
+class SSRobotsConfigExtension extends Extension {
 
     private static $db = array(
         'SSRobotsRobotTXT' => 'Text'

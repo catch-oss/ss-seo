@@ -1,7 +1,7 @@
 <?php
 namespace CatchDesign\SS\SEO\Extensions;
 
-use SilverStripe\ORM\DataExtension;
+use SilverStripe\Core\Extension;
 use SilverStripe\Control\Controller;
 use SilverStripe\Forms\CheckboxSetField;
 use SilverStripe\Forms\FieldGroup;
@@ -11,7 +11,7 @@ use SilverStripe\Forms\FieldList;
  * Does a lookup on init at the request URL and does a 301 redirect to page link if they are not same
  */
 
-class SiteTreeRobotsExtension extends DataExtension
+class SiteTreeRobotsExtension extends Extension
 {
     private static $db = array(
         'RobotsTag' => 'Text'

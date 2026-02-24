@@ -36,13 +36,34 @@ SEO enhancements for Silverstripe.
 composer require catch/ss-seo
 ```
 
+## Setup
+
+Extensions are **not auto-applied**. Add the ones you need to your project's YAML config (e.g. `app/_config/extensions.yml`):
+
+```yaml
+SilverStripe\SiteConfig\SiteConfig:
+  extensions:
+    ss-robots-config: CatchDesign\SS\SEO\Extensions\SSRobotsConfigExtension
+
+SilverStripe\CMS\Model\SiteTree:
+  extensions:
+    ss-canonical: CatchDesign\SS\SEO\Extensions\CanonicalExtension
+    ss-site-tree-robots: CatchDesign\SS\SEO\Extensions\SiteTreeRobotsExtension
+```
+
+You can apply all three or pick only the ones you need. See descriptions below.
+
 ## Usage
 
 ### Robots.txt
 
+Requires: `SSRobotsConfigExtension` on `SiteConfig`.
+
 The module registers a route at `/robots.txt` that serves content from the `Robots` tab in **Settings > Site Configuration**. Edit the robots.txt content directly in the CMS.
 
 ### Canonical URLs
+
+Requires: `CanonicalExtension` on `SiteTree`.
 
 The `CanonicalExtension` automatically redirects (301) requests to the canonical URL for each page. It:
 - Strips `index.php` from URLs
@@ -50,6 +71,8 @@ The `CanonicalExtension` automatically redirects (301) requests to the canonical
 - Skips POST requests to avoid data loss
 
 ### Per-page Robots Meta Tag
+
+Requires: `SiteTreeRobotsExtension` on `SiteTree`.
 
 The `SiteTreeRobotsExtension` adds an `X-Robots-Tag` HTTP header to every page response. Configure per-page directives (noindex, nofollow, etc.) under **Page > Settings > Robots**.
 

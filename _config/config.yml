@@ -1,15 +1,10 @@
 ---
 Name: ss-seo
 ---
+# Extensions are no longer auto-applied. See README.md for setup instructions.
+
 SilverStripe\SiteConfig\SiteConfig:
   enable_seo_cache_lifetime: true
-  extensions:
-    ss-robots-config: CatchDesign\SS\SEO\Extensions\SSRobotsConfigExtension
-
-SilverStripe\CMS\Model\SiteTree:
-  extensions:
-    ss-canonical: CatchDesign\SS\SEO\Extensions\CanonicalExtension
-    ss-site-tree-robots: CatchDesign\SS\SEO\Extensions\SiteTreeRobotsExtension
 
 SilverStripe\Core\Injector\Injector:
   SilverStripe\Assets\Image_Backend:

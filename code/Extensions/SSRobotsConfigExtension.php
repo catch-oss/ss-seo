@@ -1,29 +1,23 @@
 <?php
+
 namespace CatchDesign\SS\SEO\Extensions;
 
+use SilverStripe\Core\Extension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextareaField;
-use SilverStripe\ORM\DataExtension;
 
-/**
- * @author v2
- */
-class SSRobotsConfigExtension extends DataExtension {
+class SSRobotsConfigExtension extends Extension
+{
+    private static $db = [
+        'SSRobotsRobotTXT' => 'Text',
+    ];
 
-    private static $db = array(
-        'SSRobotsRobotTXT' => 'Text'
-    );
-
-    /**
-     * [updateCMSFields description]
-     * @param  FieldList $fields [description]
-     * @return [type]            [description]
-     */
-    public function updateCMSFields(FieldList $fields) {
+    public function updateCMSFields(FieldList $fields): void
+    {
         $fields->addFieldsToTab(
             'Root.Robots',
             [
-                new TextareaField('SSRobotsRobotTXT', 'Robots Text')
+                TextareaField::create('SSRobotsRobotTXT', 'Robots Text'),
             ]
         );
     }

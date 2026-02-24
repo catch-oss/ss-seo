@@ -39,3 +39,13 @@ dist/*
 # Mac Files
 .idea
 .DS_Store
+
+# Recipe-plugin generated files
+app/
+public/
+.htaccess
+index.php
+web.config
+
+# PHPUnit
+.phpunit.cache

@@ -4,12 +4,17 @@ namespace CatchDesign\SS\SEO\Tests\Extensions;
 
 use CatchDesign\SS\SEO\Extensions\SiteTreeRobotsExtension;
 use Page;
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Forms\CheckboxSetField;
 
 class SiteTreeRobotsExtensionTest extends FunctionalTest
 {
     protected $usesDatabase = true;
+
+    protected static $required_extensions = [
+        SiteTree::class => [SiteTreeRobotsExtension::class],
+    ];
 
     public function testXRobotsTagHeaderIsSetOnPageResponse(): void
     {

@@ -2,12 +2,17 @@
 
 namespace CatchDesign\SS\SEO\Tests\Controllers;
 
+use CatchDesign\SS\SEO\Extensions\SSRobotsConfigExtension;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\SiteConfig\SiteConfig;
 
 class SSRobotsControllerTest extends FunctionalTest
 {
     protected $usesDatabase = true;
+
+    protected static $required_extensions = [
+        SiteConfig::class => [SSRobotsConfigExtension::class],
+    ];
 
     public function testRobotsTxtReturns200(): void
     {

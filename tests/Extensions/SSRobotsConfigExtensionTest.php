@@ -2,6 +2,7 @@
 
 namespace CatchDesign\SS\SEO\Tests\Extensions;
 
+use CatchDesign\SS\SEO\Extensions\SSRobotsConfigExtension;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\SiteConfig\SiteConfig;
@@ -9,6 +10,10 @@ use SilverStripe\SiteConfig\SiteConfig;
 class SSRobotsConfigExtensionTest extends SapphireTest
 {
     protected $usesDatabase = true;
+
+    protected static $required_extensions = [
+        SiteConfig::class => [SSRobotsConfigExtension::class],
+    ];
 
     public function testRobotsTextFieldAddedToSiteConfig(): void
     {

@@ -8,11 +8,16 @@ use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\Session;
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Dev\SapphireTest;
 
 class CanonicalExtensionTest extends SapphireTest
 {
     protected $usesDatabase = true;
+
+    protected static $required_extensions = [
+        SiteTree::class => [CanonicalExtension::class],
+    ];
 
     protected function setUp(): void
     {

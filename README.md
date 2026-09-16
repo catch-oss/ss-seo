@@ -27,7 +27,7 @@ SEO enhancements for Silverstripe.
 
 | Version | Silverstripe | PHP |
 |---------|-------------|-----|
-| 6.x | ^6.0 | ^8.5 |
+| 6.x | ^6.2 | ^8.5 |
 | 5.x | ^5.1 | >=8.1 |
 
 ## Installation

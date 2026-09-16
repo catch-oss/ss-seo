@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Fixed PSR-4 autoload mapping (`Catch\SS_SEO` → `CatchDesign\SS\SEO`)
 - Moved project-level deps to `suggest` (abc-silverstripe, abc-silverstripe-social, googlesitemaps, queuedjobs)
 - Added `silverstripe/cms` and `silverstripe/siteconfig` as explicit dependencies
+- CI tests against MySQL 8.4; requires SilverStripe ^6.2 (release/6.2 branch); guzzle/symfony-mime advisories cleared in the lock
 
 ### Added
 - Full test suite (19 tests, 81% line coverage)
